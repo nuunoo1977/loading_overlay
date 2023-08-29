@@ -2,6 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 
+class OverlayControllerWidgetState {
+  Widget? widget;
+  bool? visible;
+  OverlayControllerWidgetState({this.widget, this.visible});
+}
+
 ///The inherited widget that guarantees the behavior of the overlay
 class OverlayControllerWidget extends InheritedWidget {
   OverlayControllerWidget({
@@ -18,15 +24,22 @@ class OverlayControllerWidget extends InheritedWidget {
   Stream<Map<String, dynamic>> get visibilityStream =>
       visibilityController.stream;
 
+  final _state = OverlayControllerWidgetState();
+  bool get visible => _state.visible ?? false;
+  Widget? get widget => _state.widget;
+
   ///Set the visibility of the overlay
   void setOverlayVisible(
     bool loading, {
     Widget? widget,
-  }) =>
-      visibilityController.add(<String, dynamic>{
-        'loading': loading,
-        'widget': widget,
-      });
+  }) {
+    _state.visible = loading;
+    _state.widget = widget;
+    visibilityController.add(<String, dynamic>{
+      'loading': loading,
+      'widget': widget,
+    });
+  }
 
   ///Dispose the controller
   void dispose() => visibilityController.close();

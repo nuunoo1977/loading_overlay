@@ -133,7 +133,8 @@ class _LoaderOverlayState extends State<LoaderOverlay> {
     return OverlayControllerWidget(
       child: Builder(
         builder: (innerContext) => StreamBuilder<Map<String, dynamic>>(
-          stream: innerContext.loaderOverlay.overlayController.visibilityStream,
+          stream:
+              innerContext.loaderOverlay.overlayController!.visibilityStream,
           initialData: const <String, dynamic>{
             'loading': false,
             'widget': null,
@@ -141,7 +142,7 @@ class _LoaderOverlayState extends State<LoaderOverlay> {
           builder: (_, snapshot) {
             // ignore: unused_local_variable
             final visibilityStream =
-                innerContext.loaderOverlay.overlayController.visibilityStream;
+                innerContext.loaderOverlay.overlayController!.visibilityStream;
             final isLoading = snapshot.data!['loading'] as bool;
             final widgetOverlay = snapshot.data!['widget'] as Widget?;
 
