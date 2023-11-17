@@ -84,6 +84,7 @@ extension OverlayControllerWidgetExtension on BuildContext {
   @Deprecated('Use context.loaderOverlay.hide() instead')
   void hideLoaderOverlay() => getOverlayController()?.setOverlayVisible(false);
 
+  // ignore: library_private_types_in_public_api
   _OverlayExtensionHelper get loaderOverlay =>
       _OverlayExtensionHelper(OverlayControllerWidget.of(this));
 }

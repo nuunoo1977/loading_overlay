@@ -28,6 +28,7 @@ class GlobalLoaderOverlay extends StatefulWidget {
   }) : super(key: key);
 
   final bool useBackButtonInterceptor;
+
   /// The widget of the overlay. This is great if you want to insert your own widget to serve as
   /// an overlay.
   final Widget? overlayWidget;
@@ -83,6 +84,7 @@ class GlobalLoaderOverlay extends StatefulWidget {
   final TextDirection textDirection;
 
   @override
+  // ignore: library_private_types_in_public_api
   _GlobalLoaderOverlayState createState() => _GlobalLoaderOverlayState();
 }
 
